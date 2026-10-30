@@ -1,11 +1,4 @@
 {
   "tunnel_url": "https://lodge-motel-album-adds.trycloudflare.com",
-  "updated_at": "2026-10-30T12:28:19+08:00",
-  "sites": {
-    "portal": "https://lodge-motel-album-adds.trycloudflare.com/",
-    "history": "https://lodge-motel-album-adds.trycloudflare.com/jintai-history-image-library/index.html",
-    "shengcang": "https://lodge-motel-album-adds.trycloudflare.com/shengcang-sound-library/#sound-library",
-    "documentary": "https://lodge-motel-album-adds.trycloudflare.com/documentary-classroom-library/",
-    "zhonghua": "https://lodge-motel-album-adds.trycloudflare.com/zhonghua-civilization-atlas/?v=58#era=%E5%95%86"
-  }
+  "updated_at": "2026-10-30T12:28:19+08:00"
 }
