@@ -305,8 +305,8 @@ footer{font-size:15pt;color:#5d6e72;padding-bottom:40px}
   if(!isLocalOrTunnel){
     fetch('./tunnel.json?t=' + Date.now()).then(function(r){ return r.ok ? r.json() : null; }).then(function(d){
       if(d && d.tunnel_url){
-        activeTunnelBase = d.tunnel_url.replace(/\/$/, '');
-        renderCards();
+        var base = d.tunnel_url.replace(/\/$/, '');
+        return fetch(base + '/__health', {mode: 'cors'}).then(function(hr){ if(hr && hr.ok){ activeTunnelBase = base; renderCards(); } });
       }
     }).catch(function(){});
   }
