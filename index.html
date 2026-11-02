@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><script id="jt-unified-gate">(function(){
+<head><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><script id="jt-unified-gate">(function(){
 var H='6e95ff3e55611d24803014d9de77b401f191f198f9372577e58f9aa2e51771d3';
 var k='jt_gate';
 function getSaved(){
@@ -193,12 +193,17 @@ footer{font-size:15pt;color:#5d6e72;padding-bottom:40px}
   var SITES = [
     {
       key: 'history',
-      title: '1. 中国历史文化图库 · 总检索',
-      tags: [['56,779 条目 / 290,412 提示词', ''], ['新增红楼梦专集 244 组 · 2,327 条', 'red']],
-      desc: '按历史纪年、50 政权、资产细目、考证等级与典籍故事科学检索。已新增《红楼梦角色造型与大观园·荣宁二府全场景专集》（含200幅纯建筑空镜底图）并刷新国内极速索引。',
-      cloudUrl: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/index.html',
-      localPath: '/jintai-history-image-library/index.html',
-      extraBtn: { label: '🏮 红楼梦角色场景专集', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/hongloumeng.html', local: '/jintai-history-image-library/hongloumeng.html' }
+      title: '1. 中国历史文化图库与影视参考库',
+      tags: [['60,979 条目 / 305,412 提示词 · 名人 1.5 万', ''], ['影视参考 27,700 部 · 970,236 镜', 'red']],
+      desc: '按历史纪年、65 级政权、资产细目科学检索；《影视参考图集》合拢全球 80 大摄影奖达 97.0 万镜；已上线首屏倒序《全站更新记录中心》（更新记录.html）。',
+      cloudUrl: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/portal.html',
+      localPath: '/jintai-history-image-library/portal.html',
+      extraBtns: [
+        { label: '📋 最新更新记录', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/更新记录.html', local: '/jintai-history-image-library/更新记录.html' },
+        { label: '🔍 图库总检索', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/index.html', local: '/jintai-history-image-library/index.html' },
+        { label: '🎬 影视参考图集', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/film.html', local: '/jintai-history-image-library/film.html' },
+        { label: '🏮 红楼梦专集', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/hongloumeng.html', local: '/jintai-history-image-library/hongloumeng.html' }
+      ]
     },
     {
       key: 'shengcang',
@@ -272,10 +277,11 @@ footer{font-size:15pt;color:#5d6e72;padding-bottom:40px}
       } else if(isLocalOrTunnel){
         btnsHtml += '<a class="btn ghost" href="' + s.cloudUrl + '" target="_blank" rel="noopener">永久云端备份站</a>';
       }
-      if(s.extraBtn){
-        var exHref = isLocalOrTunnel ? (activeTunnelBase + s.extraBtn.local) : s.extraBtn.cloud;
-        btnsHtml += '<a class="btn ghost" href="' + exHref + '" target="_blank" rel="noopener">' + s.extraBtn.label + '</a>';
-      }
+      var exList = s.extraBtns || (s.extraBtn ? [s.extraBtn] : []);
+      exList.forEach(function(eb){
+        var exHref = isLocalOrTunnel ? (activeTunnelBase + eb.local) : eb.cloud;
+        btnsHtml += '<a class="btn ghost" href="' + exHref + '" target="_blank" rel="noopener">' + eb.label + '</a>';
+      });
       btnsHtml += '<button class="btn ghost" type="button" data-copy="' + mainHref + '">复制网址</button>';
 
       card.innerHTML =
