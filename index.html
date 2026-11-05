@@ -130,39 +130,50 @@ if(document.readyState==='loading'){
 })();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>金泰四大文化与视听资源库 · 国内直连总入口</title>
+<title>金泰四大文化与视听资源库 · 国内直连总入口（全分类网页实时同步）</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#f4f2ed;color:#1f3136;font:19.5pt/1.62 "Microsoft YaHei","PingFang SC",sans-serif}
-header,main,footer{max-width:1360px;margin:0 auto;padding:20px 26px}
-header{padding-top:28px;padding-bottom:10px}
+body{margin:0;background:#f4f2ed;color:#1f3136;font:19pt/1.62 "Microsoft YaHei","PingFang SC",sans-serif}
+header,main,footer{max-width:1420px;margin:0 auto;padding:20px 26px}
+header{padding-top:26px;padding-bottom:8px}
 .badge-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-.badge{background:#e3ece7;color:#1e463e;padding:5px 14px;border-radius:20px;font-size:15pt;font-weight:bold}
+.badge{background:#e3ece7;color:#1e463e;padding:5px 14px;border-radius:20px;font-size:14.5pt;font-weight:bold}
 .badge.ok{background:#e6f4ea;color:#137333}
-h1{font-size:29pt;line-height:1.3;margin:6px 0 10px;color:#162b30}
-.lead{font-size:17pt;color:#42565b;margin:0 0 14px;background:#fff;border-left:5px solid #284b45;padding:12px 18px;border-radius:0 10px 10px 0;box-shadow:0 2px 8px rgba(0,0,0,.03)}
+h1{font-size:28pt;line-height:1.3;margin:6px 0 10px;color:#162b30}
+.lead{font-size:16.5pt;color:#42565b;margin:0 0 14px;background:#fff;border-left:5px solid #284b45;padding:12px 18px;border-radius:0 10px 10px 0;box-shadow:0 2px 8px rgba(0,0,0,.03)}
 .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:14px 0 6px}
+.search-box{flex:1;min-width:260px;max-width:480px;font:16pt "Microsoft YaHei","PingFang SC",sans-serif;padding:10px 15px;border:1.5px solid #8da399;border-radius:9px;background:#fff;color:#1f3136}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:14px}
 .card{background:#fff;border:1.5px solid #cfd9d2;border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 14px rgba(0,0,0,.04)}
-.card h2{font-size:22.5pt;margin:0 0 8px;color:#183238;line-height:1.35}
+.card.full{grid-column:1 / -1}
+.card h2{font-size:22pt;margin:0 0 8px;color:#183238;line-height:1.35}
 .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
 .tag{font-size:14pt;padding:3px 11px;border-radius:6px;background:#eef3f0;color:#284b45;font-weight:bold}
 .tag.red{background:#faeaea;color:#8a1c1c}
-.desc{font-size:16.5pt;color:#3d4f53;margin:6px 0 18px;line-height:1.58}
+.desc{font-size:16pt;color:#3d4f53;margin:6px 0 14px;line-height:1.58}
+.cat-section{margin:8px 0 16px;padding:14px 16px;background:#f8faf8;border:1px solid #d9e3dc;border-radius:10px}
+.cat-title{font-size:14.5pt;font-weight:bold;color:#1e463e;margin-bottom:10px}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:9px}
+.cat-link{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 13px;background:#fff;border:1px solid #c5d4cc;border-radius:8px;color:#1d353a;text-decoration:none;font-size:14.5pt;line-height:1.35;transition:border-color .15s,background .15s}
+.cat-link:hover{border-color:#284b45;background:#eef5f1}
+.cat-link strong{font-weight:bold;color:#183238}
+.cat-link span{font-size:13pt;color:#4e6569;white-space:nowrap}
 .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 20px;border-radius:9px;font:bold 16.5pt "Microsoft YaHei","PingFang SC",sans-serif;text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:opacity .15s}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 20px;border-radius:9px;font:bold 16pt "Microsoft YaHei","PingFang SC",sans-serif;text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:opacity .15s}
 .btn:hover{opacity:.9}
 .btn.primary{background:#284b45;color:#fff}
 .btn.tunnel{background:#1b5e91;color:#fff}
-.btn.ghost{background:#f5f8f6;color:#284b45;border-color:#8da399;font-weight:normal;font-size:15.5pt;padding:9px 15px}
+.btn.ghost{background:#f5f8f6;color:#284b45;border-color:#8da399;font-weight:normal;font-size:15pt;padding:9px 15px}
 .url-line{margin-top:12px;font-size:13.5pt;color:#607276;word-break:break-all;background:#f8faf8;padding:7px 11px;border-radius:6px;border:1px dashed #d6e0d9}
-.toast{min-height:30px;font-size:16pt;color:#137333;font-weight:bold}
-footer{font-size:15pt;color:#5d6e72;padding-bottom:40px}
-@media(max-width:960px){
+.toast{min-height:28px;font-size:15.5pt;color:#137333;font-weight:bold}
+footer{font-size:14.5pt;color:#5d6e72;padding-bottom:40px}
+@media(max-width:980px){
   .grid{grid-template-columns:1fr}
+  .card.full{grid-column:auto}
   header,main,footer{padding:16px}
-  h1{font-size:24pt}
-  .card h2{font-size:20.5pt}
+  h1{font-size:23.5pt}
+  .card h2{font-size:20pt}
+  .cat-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -170,13 +181,14 @@ footer{font-size:15pt;color:#5d6e72;padding-bottom:40px}
 <header>
   <div class="badge-bar">
     <span class="badge ok">● 中国大陆免代理直连</span>
-    <span class="badge">微信内置浏览器兼容</span>
-    <span class="badge">国内双 CDN + 边缘专线双保险</span>
+    <span class="badge">四站全分类网页实时同步（2026-11-05）</span>
+    <span class="badge">微信内置浏览器兼容 · 双 CDN + 边缘专线</span>
   </div>
   <h1>金泰四大文化与视听资源库 · 国内直连总入口</h1>
-  <p class="lead">已彻底解除 <code>chatgpt.site</code> 地域封锁，并将历史图库 404MB 全量分片压缩为 18MB 极速索引与微信页内验证。手机微信、Safari、Edge、Chrome 在国内网络均可直接打开。</p>
+  <p class="lead">已全量同步四大资源库与全部分类专集网页：历史文化图库（65,979 条目 / 328,412 提示词 / 14 大分类专集）· 影视参考库（28,700 部 / 131.9 万镜）· 声仓（200 条声效 / 7 大类）· 纪录片教学库（1,500 部已发布 / 4,353 总目）· 中华文明影像库（12 断代专卷 / 9,600+ 馆藏图）。</p>
   <div class="toolbar">
-    <button class="btn primary" id="copyAllBtn" type="button">一键复制全部 4 个国内直连网址（发微信直接点开）</button>
+    <input class="search-box" id="catFilter" type="search" placeholder="快速筛选分类网页（如：建筑、神话、红楼梦、聊斋、宋代、纪录片…）">
+    <button class="btn primary" id="copyAllBtn" type="button">一键复制全部 4 个国内直连网址</button>
     <span class="toast" id="toastMsg"></span>
   </div>
 </header>
@@ -186,7 +198,7 @@ footer{font-size:15pt;color:#5d6e72;padding-bottom:40px}
 </main>
 
 <footer>
-  说明：全部四座资源库及本总入口均已启用统一内部访问密码保护（与《中国历史文化图库》密码相同）；在手机微信或浏览器任意一处验证一次，四座资源库自动免重复输入通用。
+  说明：全部四座资源库及下属分类专集网页均启用统一内部访问密码保护；在手机微信或浏览器任意一处验证一次，全站与全部分类网页自动免重复输入通用。
 </footer>
 
 <script>
@@ -194,48 +206,99 @@ footer{font-size:15pt;color:#5d6e72;padding-bottom:40px}
   var SITES = [
     {
       key: 'history',
-      title: '1. 中国历史文化图库与影视参考库',
-      tags: [['65,979 条目 / 328,412 提示词 · 全网考证破10万条 · W4600', ''], ['影视参考 28,700 部 · 1,319,453 镜（破130万镜！）', 'red']],
-      desc: '按历史纪年、65 级政权极简置顶搜索，全网考证总馆藏历史性突破 101,000 条（10 万条大关！） · 历代建筑精准满 9,000 座 · 重大事件满 1,900 组与大型配套达 1,918 组 · 九大板块 54 格 100% 满 170 · 全库 66 格 100% 满 166（总检索 553 分片 / 65,979 条目 · 历史名人 18,000 人 · 薄弱专集 62,000 条跨越 W4600 · 《聊斋志异》专集 2,998 条）；《影视参考图集》突破 131.9 万镜（全球 140 大摄影奖满 108 镜 · 28,700 部整）；首屏实时同步《全站更新记录中心》。',
+      fullWidth: true,
+      title: '1. 中国历史文化图库与影视参考库（14 大分类专集全量同步）',
+      tags: [
+        ['65,979 条目 / 328,412 提示词 · 全网考证 101,000 条', ''],
+        ['建筑 9,000 座 · 神话 7,884 组 · 文学史诗满 1,200 组', ''],
+        ['影视参考 28,700 部 · 1,319,453 镜', 'red']
+      ],
+      desc: '覆盖中国全历史纪年 66 格矩阵（九大板块 54 格满 170 · 全库 66 格满 166）：历代建筑考证满 9,000 座（40,512 条）、神话与传说 7,884 组（45,666 条）、古典文学与民族史诗满 1,200 组（本集 800 组 + 红楼梦 259 组 + 聊斋 367 组）、57 部志怪传奇（专项 800 组 + 关联 2,993 组）、历史名人 18,000 人、薄弱与工程专集 62,000 条，以及全球 140 大摄影奖 28,700 部 / 1,319,453 镜影视参考库。',
       cloudUrl: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/portal.html',
       localPath: '/jintai-history-image-library/portal.html',
-      extraBtns: [
-        { label: '📋 最新更新记录', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/更新记录.html', local: '/jintai-history-image-library/更新记录.html' },
-        { label: '🔍 图库总检索', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/index.html', local: '/jintai-history-image-library/index.html' },
-        { label: '🎬 影视参考图集', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/film.html', local: '/jintai-history-image-library/film.html' },
-        { label: '🦊 聊斋志异专集', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/liaozhai.html', local: '/jintai-history-image-library/liaozhai.html' },
-        { label: '🏮 红楼梦专集', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/hongloumeng.html', local: '/jintai-history-image-library/hongloumeng.html' }
+      catTitle: '直达分类专集网页（14 个专集已与 553 分片全量对齐）：',
+      categories: [
+        { name: '📋 全站更新记录中心', meta: '每日批次台账', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/更新记录.html', local: '/jintai-history-image-library/更新记录.html' },
+        { name: '🔍 全库总检索', meta: '65,979 条目', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/index.html', local: '/jintai-history-image-library/index.html' },
+        { name: '📚 18 分卷提示词浏览', meta: '64,986 组 / 32.8万词', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/browser.html', local: '/jintai-history-image-library/browser.html' },
+        { name: '🎬 影视参考图集', meta: '28,700 部 / 131.9万镜', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/film.html', local: '/jintai-history-image-library/film.html' },
+        { name: '🏆 全球获奖影片目录', meta: '140 大摄影奖', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/sources.html', local: '/jintai-history-image-library/sources.html' },
+        { name: '🌐 全网考证总馆藏', meta: '10,100 组 / 101,000 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/websearch5000.html', local: '/jintai-history-image-library/websearch5000.html' },
+        { name: '🛠️ 薄弱与工程配套专集', meta: '6,200 组 / 62,000 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/dynasty2000.html', local: '/jintai-history-image-library/dynasty2000.html' },
+        { name: '🏯 历代建筑考证总集', meta: '9,000 座 / 40,512 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/arch5680.html', local: '/jintai-history-image-library/arch5680.html' },
+        { name: '🐉 神话与传说总专集', meta: '7,884 组 / 45,666 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/myth5000.html', local: '/jintai-history-image-library/myth5000.html' },
+        { name: '📜 古典文学与民族史诗', meta: '800 组 / 7,760 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/epics.html', local: '/jintai-history-image-library/epics.html' },
+        { name: '🏮 《红楼梦》角色与大观园', meta: '259 组 / 2,396 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/hongloumeng.html', local: '/jintai-history-image-library/hongloumeng.html' },
+        { name: '🦊 《聊斋志异》全谱专集', meta: '367 组 / 3,031 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/liaozhai.html', local: '/jintai-history-image-library/liaozhai.html' },
+        { name: '📖 57 部志怪佛道传奇', meta: '800 组 + 2,993 关联', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/zhiguai31.html', local: '/jintai-history-image-library/zhiguai31.html' },
+        { name: '👤 历代历史名人专集', meta: '18,000 人', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/figures.html', local: '/jintai-history-image-library/figures.html' }
       ]
     },
     {
-      key: 'shengcang',
-      title: '2. 声仓 · 找到画面之外的声音',
-      tags: [['200 条影视声音素材', ''], ['统一密码保护 · 微信一次通用', 'red']],
-      desc: '自然环境、生活器物、交通机械、动物生灵、界面动效等精选影视声效库。已完整脱离 chatgpt.site，支持国内在线试听、波形预览与原文件下载。',
-      cloudUrl: 'https://aikingtai-ctrl.github.io/shengcang-sound-library/#sound-library',
-      localPath: '/shengcang-sound-library/#sound-library'
+      key: 'zhonghua',
+      fullWidth: true,
+      title: '2. 中华文明影像库 · 视觉美术参考（全朝代总览 + 12 断代考证专卷）',
+      tags: [
+        ['12 断代考证专卷 · 9,600+ 馆藏文物实证图', ''],
+        ['统一密码保护 · 微信一次通用', 'red']
+      ],
+      desc: '汇集海内外博物馆开放馆藏与考古出土图像实证，覆盖史前至明清全朝代器物、服饰、甲胄、车马与建筑考证，内置商、西周、春秋、战国、秦、西汉、东汉、魏晋南北朝、隋、宋、辽、金 12 部独立断代分类专卷。',
+      cloudUrl: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/',
+      localPath: '/zhonghua-civilization-atlas/',
+      catTitle: '直达断代分类网页（全朝代总览 + 12 断代专卷）：',
+      categories: [
+        { name: '🏛️ 全朝代影像总览首页', meta: '9,600+ 馆藏实证', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/', local: '/zhonghua-civilization-atlas/' },
+        { name: '🏺 商代专卷', meta: '青铜礼器·殷墟甲骨', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/shang.html', local: '/zhonghua-civilization-atlas/shang.html' },
+        { name: '🔔 西周专卷', meta: '礼乐彝器·车马铭文', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/western-zhou.html', local: '/zhonghua-civilization-atlas/western-zhou.html' },
+        { name: '⚔️ 春秋专卷', meta: '列国青铜·礼崩乐坏', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/spring-autumn.html', local: '/zhonghua-civilization-atlas/spring-autumn.html' },
+        { name: '🐉 战国专卷', meta: '楚漆错金·七雄衣冠', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/warring-states.html', local: '/zhonghua-civilization-atlas/warring-states.html' },
+        { name: '🛡️ 秦代专卷', meta: '兵马俑阵·秦诏度量', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/qin.html', local: '/zhonghua-civilization-atlas/qin.html' },
+        { name: '🐎 西汉专卷', meta: '马王堆·汉阙丝路', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/western-han.html', local: '/zhonghua-civilization-atlas/western-han.html' },
+        { name: '🧱 东汉专卷', meta: '画像石砖·绿釉陶楼', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/eastern-han.html', local: '/zhonghua-civilization-atlas/eastern-han.html' },
+        { name: '🪷 魏晋南北朝专卷', meta: '石窟壁画·褒衣博带', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/weijin.html', local: '/zhonghua-civilization-atlas/weijin.html' },
+        { name: '🌉 隋代专卷', meta: '白瓷金银·大运河', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/sui.html', local: '/zhonghua-civilization-atlas/sui.html' },
+        { name: '🎋 宋代专卷', meta: '汝官哥钧·风俗书画', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/song.html', local: '/zhonghua-civilization-atlas/song.html' },
+        { name: '🦅 辽代专卷', meta: '契丹金面·辽塔壁画', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/liao.html', local: '/zhonghua-civilization-atlas/liao.html' },
+        { name: '🦌 金代专卷', meta: '女真春水秋山·磁州窑', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/jin.html', local: '/zhonghua-civilization-atlas/jin.html' }
+      ]
     },
     {
       key: 'documentary',
       title: '3. 纪录片教学资源库 · 以真实，启发课堂',
-      tags: [['678 部已发布课程档案 / 1,841 总目', ''], ['统一密码保护 · 微信一次通用', 'red']],
-      desc: '覆盖 1910–2020 年代全球与中国经典纪录片，含教学切入点、课堂讨论问题、关联课程、片段分析与核查出处。已全量内嵌离线检索 API。',
+      tags: [
+        ['1,500 部已发布课程档案 / 4,353 总目', ''],
+        ['73 国家地区 · 796 主题分类', 'red']
+      ],
+      desc: '覆盖 1910–2020 年代全球与中国经典纪录片，已由 678 部扩容同步至 1,500 部完整课程档案（总目 4,353 部），每部均含教学切入点、课堂讨论问题、关联课程、片段分析与核查出处，支持离线多维分类检索。',
       cloudUrl: 'https://aikingtai-ctrl.github.io/documentary-classroom-library/',
-      localPath: '/documentary-classroom-library/'
+      localPath: '/documentary-classroom-library/',
+      catTitle: '功能与分类入口：',
+      categories: [
+        { name: '🎞️ 1,500 部课程档案检索', meta: '按学科 / 年代 / 国家', cloud: 'https://aikingtai-ctrl.github.io/documentary-classroom-library/#library', local: '/documentary-classroom-library/#library' },
+        { name: '🗂️ 4,353 部全球纪录片总目', meta: '796 个主题分类', cloud: 'https://aikingtai-ctrl.github.io/documentary-classroom-library/', local: '/documentary-classroom-library/' }
+      ]
     },
     {
-      key: 'zhonghua',
-      title: '4. 中华文明影像库 · 视觉美术参考',
-      tags: [['全朝代馆藏文物实证 · 商代专卷', ''], ['统一密码保护 · 微信一次通用', 'red']],
-      desc: '汇集海内外博物馆开放馆藏与考古出土图像考证，涵盖史前、夏、商、西周、春秋战国、秦汉、魏晋、隋唐、宋辽金西夏等历代器物服饰与建筑实证。',
-      cloudUrl: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/?v=58#era=%E5%95%86',
-      localPath: '/zhonghua-civilization-atlas/?v=58#era=%E5%95%86',
-      extraBtn: { label: '打开全朝代首页', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/', local: '/zhonghua-civilization-atlas/' }
+      key: 'shengcang',
+      title: '4. 声仓 · 找到画面之外的声音',
+      tags: [
+        ['200 条影视声音素材 · 7 大声效分类', ''],
+        ['统一密码保护 · 微信一次通用', 'red']
+      ],
+      desc: '涵盖环境氛围、物件拟音、界面提示、交通机械、战斗破坏、科幻魔法、人物拟音 7 大影视声效分类。支持国内直连在线试听、波形预览、中英双语标签过滤与原文件下载。',
+      cloudUrl: 'https://aikingtai-ctrl.github.io/shengcang-sound-library/#sound-library',
+      localPath: '/shengcang-sound-library/#sound-library',
+      catTitle: '功能与分类入口：',
+      categories: [
+        { name: '🔊 在线声效分类检索与试听', meta: '7 大类 · 200 条', cloud: 'https://aikingtai-ctrl.github.io/shengcang-sound-library/#sound-library', local: '/shengcang-sound-library/#sound-library' },
+        { name: '🎚️ 声仓首页与使用指南', meta: '波形预览与下载', cloud: 'https://aikingtai-ctrl.github.io/shengcang-sound-library/', local: '/shengcang-sound-library/' }
+      ]
     }
   ];
 
   var isLocalOrTunnel = /trycloudflare\.com$|127\.0\.0\.1$|localhost$/i.test(location.hostname || '');
   var activeTunnelBase = isLocalOrTunnel ? location.origin : '';
+  var filterKw = '';
 
   function copyText(txt, msg){
     if(navigator.clipboard && navigator.clipboard.writeText){
@@ -262,16 +325,37 @@ footer{font-size:15pt;color:#5d6e72;padding-bottom:40px}
   function renderCards(){
     var box = document.getElementById('cards');
     box.innerHTML = '';
+    var kw = (filterKw || '').trim().toLowerCase();
+
     SITES.forEach(function(s){
+      var cats = (s.categories || []).filter(function(c){
+        if(!kw) return true;
+        var blob = (s.title + ' ' + c.name + ' ' + c.meta).toLowerCase();
+        return blob.indexOf(kw) !== -1;
+      });
+      if(kw && cats.length === 0 && (s.title + ' ' + s.desc).toLowerCase().indexOf(kw) === -1){
+        return;
+      }
+
       var card = document.createElement('div');
-      card.className = 'card';
+      card.className = 'card' + (s.fullWidth ? ' full' : '');
       var tUrl = activeTunnelBase ? (activeTunnelBase + s.localPath) : '';
       var mainHref = isLocalOrTunnel ? tUrl : s.cloudUrl;
-      var mainLabel = isLocalOrTunnel ? '立即打开（当前高速专线）' : '立即打开（永久云端直连）';
+      var mainLabel = isLocalOrTunnel ? '立即打开主站（高速专线）' : '立即打开主站（永久云端直连）';
 
       var tagsHtml = s.tags.map(function(t){
         return '<span class="tag ' + (t[1]||'') + '">' + t[0] + '</span>';
       }).join('');
+
+      var catHtml = '';
+      var showCats = cats.length ? cats : (s.categories || []);
+      if(showCats.length){
+        var links = showCats.map(function(c){
+          var chref = isLocalOrTunnel ? (activeTunnelBase + c.local) : c.cloud;
+          return '<a class="cat-link" href="' + chref + '" target="_blank" rel="noopener"><strong>' + c.name + '</strong><span>' + c.meta + ' ↗</span></a>';
+        }).join('');
+        catHtml = '<div class="cat-section"><div class="cat-title">' + (s.catTitle || '分类网页：') + '</div><div class="cat-grid">' + links + '</div></div>';
+      }
 
       var btnsHtml = '<a class="btn primary" href="' + mainHref + '" target="_blank" rel="noopener">' + mainLabel + '</a>';
       if(!isLocalOrTunnel && tUrl){
@@ -279,15 +363,10 @@ footer{font-size:15pt;color:#5d6e72;padding-bottom:40px}
       } else if(isLocalOrTunnel){
         btnsHtml += '<a class="btn ghost" href="' + s.cloudUrl + '" target="_blank" rel="noopener">永久云端备份站</a>';
       }
-      var exList = s.extraBtns || (s.extraBtn ? [s.extraBtn] : []);
-      exList.forEach(function(eb){
-        var exHref = isLocalOrTunnel ? (activeTunnelBase + eb.local) : eb.cloud;
-        btnsHtml += '<a class="btn ghost" href="' + exHref + '" target="_blank" rel="noopener">' + eb.label + '</a>';
-      });
-      btnsHtml += '<button class="btn ghost" type="button" data-copy="' + mainHref + '">复制网址</button>';
+      btnsHtml += '<button class="btn ghost" type="button" data-copy="' + mainHref + '">复制主站网址</button>';
 
       card.innerHTML =
-        '<div><h2>' + s.title + '</h2><div class="tags">' + tagsHtml + '</div><p class="desc">' + s.desc + '</p></div>' +
+        '<div><h2>' + s.title + '</h2><div class="tags">' + tagsHtml + '</div><p class="desc">' + s.desc + '</p>' + catHtml + '</div>' +
         '<div><div class="actions">' + btnsHtml + '</div><div class="url-line">' + mainHref + '</div></div>';
       box.appendChild(card);
     });
@@ -297,8 +376,13 @@ footer{font-size:15pt;color:#5d6e72;padding-bottom:40px}
     });
   }
 
+  document.getElementById('catFilter').addEventListener('input', function(e){
+    filterKw = e.target.value || '';
+    renderCards();
+  });
+
   document.getElementById('copyAllBtn').onclick = function(){
-    var lines = ['【金泰四大文化与视听资源库 · 国内直连地址】'];
+    var lines = ['【金泰四大文化与视听资源库 · 国内直连总入口】', '总入口：https://aikingtai-ctrl.github.io/jintai-domestic-portal/'];
     SITES.forEach(function(s){
       var u = (isLocalOrTunnel && activeTunnelBase) ? (activeTunnelBase + s.localPath) : s.cloudUrl;
       lines.push(s.title + '\n' + u);
@@ -306,7 +390,7 @@ footer{font-size:15pt;color:#5d6e72;padding-bottom:40px}
         lines.push('  ↳ 零github备用专线：' + activeTunnelBase + s.localPath);
       }
     });
-    copyText(lines.join('\n\n'), '全部 4 个网址已复制！可直接发到手机微信点开。');
+    copyText(lines.join('\n\n'), '全部网址已复制！可直接发到手机微信点开。');
   };
 
   renderCards();
