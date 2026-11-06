@@ -1,11 +1,11 @@
 {
-  "tunnel_url": "https://doe-institution-chain-suppliers.trycloudflare.com",
-  "updated_at": "2026-11-05T16:26:51+08:00",
+  "tunnel_url": "https://graphs-ashley-vic-alpha.trycloudflare.com",
+  "updated_at": "2026-11-06T17:12:21+08:00",
   "sites": {
-    "portal": "https://doe-institution-chain-suppliers.trycloudflare.com/",
-    "history": "https://doe-institution-chain-suppliers.trycloudflare.com/jintai-history-image-library/index.html",
-    "shengcang": "https://doe-institution-chain-suppliers.trycloudflare.com/shengcang-sound-library/#sound-library",
-    "documentary": "https://doe-institution-chain-suppliers.trycloudflare.com/documentary-classroom-library/",
-    "zhonghua": "https://doe-institution-chain-suppliers.trycloudflare.com/zhonghua-civilization-atlas/?v=58#era=%E5%95%86"
+    "portal": "https://graphs-ashley-vic-alpha.trycloudflare.com/",
+    "history": "https://graphs-ashley-vic-alpha.trycloudflare.com/jintai-history-image-library/index.html",
+    "shengcang": "https://graphs-ashley-vic-alpha.trycloudflare.com/shengcang-sound-library/#sound-library",
+    "documentary": "https://graphs-ashley-vic-alpha.trycloudflare.com/documentary-classroom-library/",
+    "zhonghua": "https://graphs-ashley-vic-alpha.trycloudflare.com/zhonghua-civilization-atlas/?v=58#era=%E5%95%86"
   }
 }
