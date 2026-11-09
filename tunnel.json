@@ -1,11 +1,11 @@
 {
-  "tunnel_url": "https://graphs-ashley-vic-alpha.trycloudflare.com",
-  "updated_at": "2026-11-06T17:12:21+08:00",
+  "tunnel_url": "https://baking-music-roy-die.trycloudflare.com",
+  "updated_at": "2026-11-09T15:16:00+08:00",
   "sites": {
-    "portal": "https://graphs-ashley-vic-alpha.trycloudflare.com/",
-    "history": "https://graphs-ashley-vic-alpha.trycloudflare.com/jintai-history-image-library/index.html",
-    "shengcang": "https://graphs-ashley-vic-alpha.trycloudflare.com/shengcang-sound-library/#sound-library",
-    "documentary": "https://graphs-ashley-vic-alpha.trycloudflare.com/documentary-classroom-library/",
-    "zhonghua": "https://graphs-ashley-vic-alpha.trycloudflare.com/zhonghua-civilization-atlas/?v=58#era=%E5%95%86"
+    "portal": "https://baking-music-roy-die.trycloudflare.com/",
+    "history": "https://baking-music-roy-die.trycloudflare.com/jintai-history-image-library/index.html",
+    "shengcang": "https://baking-music-roy-die.trycloudflare.com/shengcang-sound-library/#sound-library",
+    "documentary": "https://baking-music-roy-die.trycloudflare.com/documentary-classroom-library/",
+    "zhonghua": "https://baking-music-roy-die.trycloudflare.com/zhonghua-civilization-atlas/?v=58#era=%E5%95%86"
   }
 }
