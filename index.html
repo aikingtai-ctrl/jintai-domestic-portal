@@ -181,11 +181,11 @@ footer{font-size:14.5pt;color:#5d6e72;padding-bottom:40px}
 <header>
   <div class="badge-bar">
     <span class="badge ok">● 中国大陆免代理直连</span>
-    <span class="badge">四站全分类网页实时同步（2026-11-11）</span>
+    <span class="badge">四站全分类网页实时同步（2026-11-13）</span>
     <span class="badge">微信内置浏览器兼容 · 双 CDN + 边缘专线</span>
   </div>
   <h1>金泰四大文化与视听资源库 · 国内直连总入口</h1>
-  <p class="lead">已全量同步四大资源库与全部分类专集网页：历史文化图库（74,979 条目 / 364,412 提示词 / 14 大分类专集）· 影视参考库（33,000 部 / 1,618,367 镜）· 声仓（200 条声效 / 7 大类）· 纪录片教学库（1,921 部已发布 / 29,469 总目）· 中华文明影像库（12 断代专卷 / 9,600+ 馆藏图）。</p>
+  <p class="lead">已全量同步四大资源库与全部分类专集网页：历史文化图库（77,379 条目 / 370,412 提示词 / 14 大分类专集）· 影视参考库（53,000 部 / 2,779,879 镜 / 250 大流派）· 声仓（72,298 条声效 / 12 大类）· 纪录片教学库（4,229 部已发布 / 30,469 总目）· 中华文明影像库（12 断代专卷 / 26,847 条馆藏考证）。</p>
   <div class="toolbar">
     <input class="search-box" id="catFilter" type="search" placeholder="快速筛选分类网页（如：建筑、神话、红楼梦、聊斋、宋代、纪录片…）">
     <button class="btn primary" id="copyAllBtn" type="button">一键复制全部 4 个国内直连网址</button>
@@ -205,96 +205,278 @@ footer{font-size:14.5pt;color:#5d6e72;padding-bottom:40px}
 (function(){
   var SITES = [
     {
-      key: 'history',
-      fullWidth: true,
-      title: '1. 中国历史文化图库与影视参考库（14 大分类专集全量同步）',
-      tags: [
-        ['74,979 条目 / 364,412 提示词（36.44万词）· 全网考证 131,000 条（破13万！）', ''],
-        ['建筑 9,467 座（45,182 条）· 名人 24,000 人 · 文学传奇满 2,600/3,000 组', ''],
-        ['影视参考 33,000 部 · 1,618,367 镜', 'red']
-      ],
-      desc: '覆盖中国全历史纪年 66 格矩阵（全库达 364,412 条提示词 / 74,979 条目 · 九大朝代与军事板块全员突破 2,000 条目 · 民国 6 格全满 ≥370 · 文学史诗 6 格全满 ≥366 · 民国小说与民间传奇各满 800 组/合计1.6万条）：历代历史名人 24,000 人、全网考证 131,000 条、薄弱专集 74,000 条（W5800）、历代建筑考证 9,467 座（45,182 条）、神话与传说 7,884 组（45,666 条）、文学名著·民国小说与民间传奇（2,600 组 / 25,760 条，合璧红楼聊斋全库达 3,000 组）。',
-      cloudUrl: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/portal.html',
-      localPath: '/jintai-history-image-library/portal.html',
-      catTitle: '直达分类专集网页（14 个专集已与 708 分片全量对齐）：',
-      categories: [
-        { name: '📋 全站更新记录中心', meta: '每日批次台账', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/更新记录.html', local: '/jintai-history-image-library/更新记录.html' },
-        { name: '🔍 全库总检索', meta: '74,979 条目 / 36.4万词', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/index.html', local: '/jintai-history-image-library/index.html' },
-        { name: '📚 18 分卷提示词浏览', meta: '73,986 组 / 35.9万词', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/browser.html', local: '/jintai-history-image-library/browser.html' },
-        { name: '🎬 影视参考图集', meta: '33,000 部 / 155.7万镜', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/film.html', local: '/jintai-history-image-library/film.html' },
-        { name: '🏆 全球获奖影片目录', meta: '140 大摄影奖', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/sources.html', local: '/jintai-history-image-library/sources.html' },
-        { name: '🌐 全网考证总馆藏', meta: '13,100 组 / 131,000 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/websearch5000.html', local: '/jintai-history-image-library/websearch5000.html' },
-        { name: '🛠️ 薄弱与工程配套专集', meta: '7,400 组 / 74,000 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/dynasty2000.html', local: '/jintai-history-image-library/dynasty2000.html' },
-        { name: '🏯 历代建筑考证总集', meta: '9,467 座 / 45,182 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/arch5680.html', local: '/jintai-history-image-library/arch5680.html' },
-        { name: '🐉 神话与传说总专集', meta: '7,884 组 / 45,666 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/myth5000.html', local: '/jintai-history-image-library/myth5000.html' },
-        { name: '📜 文学·民国小说·民间传奇', meta: '2,600 组 / 25,760 条（全库满3,000组）', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/epics.html', local: '/jintai-history-image-library/epics.html' },
-        { name: '🏮 《红楼梦》角色与大观园', meta: '265 组 / 2,411 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/hongloumeng.html', local: '/jintai-history-image-library/hongloumeng.html' },
-        { name: '🦊 《聊斋志异》全谱专集', meta: '373 组 / 3,073 条', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/liaozhai.html', local: '/jintai-history-image-library/liaozhai.html' },
-        { name: '📖 57 部志怪佛道传奇', meta: '800 组 + 3,048 关联', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/zhiguai31.html', local: '/jintai-history-image-library/zhiguai31.html' },
-        { name: '👤 历代历史名人专集', meta: '24,000 人', cloud: 'https://aikingtai-ctrl.github.io/jintai-history-image-library/figures.html', local: '/jintai-history-image-library/figures.html' }
-      ]
+        "key": "history",
+        "fullWidth": true,
+        "title": "1. 中国历史文化图库与影视参考库（14 大分类专集全量同步）",
+        "tags": [
+            [
+                "77,379 条目 / 370,412 提示词（37.04万词）· 全网考证 135,000 条",
+                ""
+            ],
+            [
+                "建筑 9,507 座（45,582 条）· 名人 26,000 人 · 文学传奇满 2,600/3,000 组",
+                ""
+            ],
+            [
+                "影视参考 53,000 部 · 2,779,879 镜 · 250 大流派",
+                "red"
+            ]
+        ],
+        "desc": "覆盖中国全历史纪年 66 格矩阵（全库达 370,412 条提示词 / 77,379 条目 · 736 分片）：历代历史名人 26,000 人、全网考证 135,000 条、薄弱专集 78,000 条（W6200）、历代建筑考证 9,507 座（45,582 条）、神话与传说 7,884 组（45,666 条）、文学名著·民国小说与民间传奇（2,600 组 / 25,760 条，合璧红楼聊斋全库满 3,000 组）。",
+        "cloudUrl": "https://aikingtai-ctrl.github.io/jintai-history-image-library/portal.html",
+        "localPath": "/jintai-history-image-library/portal.html",
+        "catTitle": "直达分类专集网页（14 个专集已与 736 分片全量对齐）：",
+        "categories": [
+            {
+                "name": "📋 全站更新记录中心",
+                "meta": "每日批次台账",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/更新记录.html",
+                "local": "/jintai-history-image-library/更新记录.html"
+            },
+            {
+                "name": "🔍 全库总检索",
+                "meta": "77,379 条目 / 37.0万词",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/index.html",
+                "local": "/jintai-history-image-library/index.html"
+            },
+            {
+                "name": "📚 18 分卷提示词浏览",
+                "meta": "76,386 组 / 36.5万词",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/browser.html",
+                "local": "/jintai-history-image-library/browser.html"
+            },
+            {
+                "name": "🎬 影视参考图集",
+                "meta": "53,000 部 / 278.0万镜",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/film.html",
+                "local": "/jintai-history-image-library/film.html"
+            },
+            {
+                "name": "🏆 全球获奖影片目录",
+                "meta": "140 大奖项 · 250 流派",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/sources.html",
+                "local": "/jintai-history-image-library/sources.html"
+            },
+            {
+                "name": "🌐 全网考证总馆藏",
+                "meta": "13,500 组 / 135,000 条",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/websearch5000.html",
+                "local": "/jintai-history-image-library/websearch5000.html"
+            },
+            {
+                "name": "🛠️ 薄弱与工程配套专集",
+                "meta": "7,800 组 / 78,000 条",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/dynasty2000.html",
+                "local": "/jintai-history-image-library/dynasty2000.html"
+            },
+            {
+                "name": "🏯 历代建筑考证总集",
+                "meta": "9,507 座 / 45,582 条",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/arch5680.html",
+                "local": "/jintai-history-image-library/arch5680.html"
+            },
+            {
+                "name": "🐉 神话与传说总专集",
+                "meta": "7,884 组 / 45,666 条",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/myth5000.html",
+                "local": "/jintai-history-image-library/myth5000.html"
+            },
+            {
+                "name": "📜 文学·民国小说·民间传奇",
+                "meta": "2,600 组 / 25,760 条（全库满3,000组）",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/epics.html",
+                "local": "/jintai-history-image-library/epics.html"
+            },
+            {
+                "name": "🏮 《红楼梦》角色与大观园",
+                "meta": "268 组 / 2,423 条",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/hongloumeng.html",
+                "local": "/jintai-history-image-library/hongloumeng.html"
+            },
+            {
+                "name": "🦊 《聊斋志异》全谱专集",
+                "meta": "376 组 / 3,094 条",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/liaozhai.html",
+                "local": "/jintai-history-image-library/liaozhai.html"
+            },
+            {
+                "name": "📖 57 部志怪佛道传奇",
+                "meta": "800 组 + 3,072 关联",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/zhiguai31.html",
+                "local": "/jintai-history-image-library/zhiguai31.html"
+            },
+            {
+                "name": "👤 历代历史名人专集",
+                "meta": "26,000 人",
+                "cloud": "https://aikingtai-ctrl.github.io/jintai-history-image-library/figures.html",
+                "local": "/jintai-history-image-library/figures.html"
+            }
+        ]
     },
     {
-      key: 'zhonghua',
-      fullWidth: true,
-      title: '2. 中华文明影像库 · 视觉美术参考（全朝代总览 + 12 断代考证专卷）',
-      tags: [
-        ['12 断代考证专卷 · 9,600+ 馆藏文物实证图', ''],
-        ['统一密码保护 · 微信一次通用', 'red']
-      ],
-      desc: '汇集海内外博物馆开放馆藏与考古出土图像实证，覆盖史前至明清全朝代器物、服饰、甲胄、车马与建筑考证，内置商、西周、春秋、战国、秦、西汉、东汉、魏晋南北朝、隋、宋、辽、金 12 部独立断代分类专卷。',
-      cloudUrl: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/',
-      localPath: '/zhonghua-civilization-atlas/',
-      catTitle: '直达断代分类网页（全朝代总览 + 12 断代专卷）：',
-      categories: [
-        { name: '🏛️ 全朝代影像总览首页', meta: '9,600+ 馆藏实证', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/', local: '/zhonghua-civilization-atlas/' },
-        { name: '🏺 商代专卷', meta: '青铜礼器·殷墟甲骨', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/shang.html', local: '/zhonghua-civilization-atlas/shang.html' },
-        { name: '🔔 西周专卷', meta: '礼乐彝器·车马铭文', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/western-zhou.html', local: '/zhonghua-civilization-atlas/western-zhou.html' },
-        { name: '⚔️ 春秋专卷', meta: '列国青铜·礼崩乐坏', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/spring-autumn.html', local: '/zhonghua-civilization-atlas/spring-autumn.html' },
-        { name: '🐉 战国专卷', meta: '楚漆错金·七雄衣冠', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/warring-states.html', local: '/zhonghua-civilization-atlas/warring-states.html' },
-        { name: '🛡️ 秦代专卷', meta: '兵马俑阵·秦诏度量', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/qin.html', local: '/zhonghua-civilization-atlas/qin.html' },
-        { name: '🐎 西汉专卷', meta: '马王堆·汉阙丝路', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/western-han.html', local: '/zhonghua-civilization-atlas/western-han.html' },
-        { name: '🧱 东汉专卷', meta: '画像石砖·绿釉陶楼', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/eastern-han.html', local: '/zhonghua-civilization-atlas/eastern-han.html' },
-        { name: '🪷 魏晋南北朝专卷', meta: '石窟壁画·褒衣博带', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/weijin.html', local: '/zhonghua-civilization-atlas/weijin.html' },
-        { name: '🌉 隋代专卷', meta: '白瓷金银·大运河', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/sui.html', local: '/zhonghua-civilization-atlas/sui.html' },
-        { name: '🎋 宋代专卷', meta: '汝官哥钧·风俗书画', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/song.html', local: '/zhonghua-civilization-atlas/song.html' },
-        { name: '🦅 辽代专卷', meta: '契丹金面·辽塔壁画', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/liao.html', local: '/zhonghua-civilization-atlas/liao.html' },
-        { name: '🦌 金代专卷', meta: '女真春水秋山·磁州窑', cloud: 'https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/jin.html', local: '/zhonghua-civilization-atlas/jin.html' }
-      ]
+        "key": "zhonghua",
+        "fullWidth": true,
+        "title": "2. 中华文明影像库 · 视觉美术参考（全朝代总览 + 12 断代考证专卷）",
+        "tags": [
+            [
+                "12 断代考证专卷 · 26,847 条馆藏文物考证（18,427 张高清图）",
+                ""
+            ],
+            [
+                "统一密码保护 · 微信一次通用",
+                "red"
+            ]
+        ],
+        "desc": "汇集海内外博物馆开放馆藏与考古出土图像实证（全库已达 26,847 条文物考证记录 · 18,427 张自托管高清馆藏图），覆盖史前至明清全朝代器物、服饰、甲胄、车马与建筑考证，内置商、西周、春秋、战国、秦、西汉、东汉、魏晋南北朝、隋、宋、辽、金 12 部独立断代分类专卷。",
+        "cloudUrl": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/",
+        "localPath": "/zhonghua-civilization-atlas/",
+        "catTitle": "直达断代分类网页（全朝代总览 + 12 断代专卷）：",
+        "categories": [
+            {
+                "name": "🏛️ 全朝代影像总览首页",
+                "meta": "26,847 条馆藏实证",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/",
+                "local": "/zhonghua-civilization-atlas/"
+            },
+            {
+                "name": "🏺 商代专卷",
+                "meta": "青铜礼器·殷墟甲骨",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/shang.html",
+                "local": "/zhonghua-civilization-atlas/shang.html"
+            },
+            {
+                "name": "🔔 西周专卷",
+                "meta": "礼乐彝器·车马铭文",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/western-zhou.html",
+                "local": "/zhonghua-civilization-atlas/western-zhou.html"
+            },
+            {
+                "name": "⚔️ 春秋专卷",
+                "meta": "列国青铜·礼崩乐坏",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/spring-autumn.html",
+                "local": "/zhonghua-civilization-atlas/spring-autumn.html"
+            },
+            {
+                "name": "🐉 战国专卷",
+                "meta": "楚漆错金·七雄衣冠",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/warring-states.html",
+                "local": "/zhonghua-civilization-atlas/warring-states.html"
+            },
+            {
+                "name": "🛡️ 秦代专卷",
+                "meta": "兵马俑阵·秦诏度量",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/qin.html",
+                "local": "/zhonghua-civilization-atlas/qin.html"
+            },
+            {
+                "name": "🐎 西汉专卷",
+                "meta": "马王堆·汉阙丝路",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/western-han.html",
+                "local": "/zhonghua-civilization-atlas/western-han.html"
+            },
+            {
+                "name": "🧱 东汉专卷",
+                "meta": "画像石砖·绿釉陶楼",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/eastern-han.html",
+                "local": "/zhonghua-civilization-atlas/eastern-han.html"
+            },
+            {
+                "name": "🪷 魏晋南北朝专卷",
+                "meta": "石窟壁画·褒衣博带",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/weijin.html",
+                "local": "/zhonghua-civilization-atlas/weijin.html"
+            },
+            {
+                "name": "🌉 隋代专卷",
+                "meta": "白瓷金银·大运河",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/sui.html",
+                "local": "/zhonghua-civilization-atlas/sui.html"
+            },
+            {
+                "name": "🎋 宋代专卷",
+                "meta": "汝官哥钧·风俗书画",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/song.html",
+                "local": "/zhonghua-civilization-atlas/song.html"
+            },
+            {
+                "name": "🦅 辽代专卷",
+                "meta": "契丹金面·辽塔壁画",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/liao.html",
+                "local": "/zhonghua-civilization-atlas/liao.html"
+            },
+            {
+                "name": "🦌 金代专卷",
+                "meta": "女真春水秋山·磁州窑",
+                "cloud": "https://aikingtai-ctrl.github.io/zhonghua-civilization-atlas/jin.html",
+                "local": "/zhonghua-civilization-atlas/jin.html"
+            }
+        ]
     },
     {
-      key: 'documentary',
-      title: '3. 纪录片教学资源库 · 以真实，启发课堂',
-      tags: [
-        ['1,921 部已发布课程档案 / 29,469 总目', ''],
-        ['78 国家地区 · 904 主题分类', 'red']
-      ],
-      desc: '覆盖 1910–2020 年代全球与中国经典纪录片，已扩容同步至 1,921 部完整课程档案（总目 29,469 部 · 78 个国家地区 · 904 个主题分类），每部均含教学切入点、课堂讨论问题、关联课程、片段分析与核查出处，支持离线多维分类检索。',
-      cloudUrl: 'https://aikingtai-ctrl.github.io/documentary-classroom-library/',
-      localPath: '/documentary-classroom-library/',
-      catTitle: '功能与分类入口：',
-      categories: [
-        { name: '🎞️ 1,921 部课程档案检索', meta: '按学科 / 年代 / 国家', cloud: 'https://aikingtai-ctrl.github.io/documentary-classroom-library/#library', local: '/documentary-classroom-library/#library' },
-        { name: '🗂️ 29,469 部全球纪录片总目', meta: '904 个主题分类', cloud: 'https://aikingtai-ctrl.github.io/documentary-classroom-library/', local: '/documentary-classroom-library/' }
-      ]
+        "key": "documentary",
+        "title": "3. 纪录片教学资源库 · 以真实，启发课堂",
+        "tags": [
+            [
+                "4,229 部已发布课程档案 / 30,469 总目",
+                ""
+            ],
+            [
+                "137 国家地区 · 1,176 主题分类",
+                "red"
+            ]
+        ],
+        "desc": "覆盖 1910–2020 年代全球与中国经典纪录片，已扩容同步至 4,229 部已发布课程档案（登记总目 30,469 部 · 137 个国家地区 · 1,176 个主题分类），支持按学科、年代、国家与主题多维课堂检索。",
+        "cloudUrl": "https://aikingtai-ctrl.github.io/documentary-classroom-library/",
+        "localPath": "/documentary-classroom-library/",
+        "catTitle": "功能与分类入口：",
+        "categories": [
+            {
+                "name": "🎞️ 4,229 部课程档案检索",
+                "meta": "按学科 / 年代 / 国家",
+                "cloud": "https://aikingtai-ctrl.github.io/documentary-classroom-library/#library",
+                "local": "/documentary-classroom-library/#library"
+            },
+            {
+                "name": "🗂️ 30,469 部全球纪录片总目",
+                "meta": "1,176 个主题分类",
+                "cloud": "https://aikingtai-ctrl.github.io/documentary-classroom-library/",
+                "local": "/documentary-classroom-library/"
+            }
+        ]
     },
     {
-      key: 'shengcang',
-      title: '4. 声仓 · 找到画面之外的声音',
-      tags: [
-        ['200 条影视声音素材 · 7 大声效分类', ''],
-        ['统一密码保护 · 微信一次通用', 'red']
-      ],
-      desc: '涵盖环境氛围、物件拟音、界面提示、交通机械、战斗破坏、科幻魔法、人物拟音 7 大影视声效分类。支持国内直连在线试听、波形预览、中英双语标签过滤与原文件下载。',
-      cloudUrl: 'https://aikingtai-ctrl.github.io/shengcang-sound-library/#sound-library',
-      localPath: '/shengcang-sound-library/#sound-library',
-      catTitle: '功能与分类入口：',
-      categories: [
-        { name: '🔊 在线声效分类检索与试听', meta: '7 大类 · 200 条', cloud: 'https://aikingtai-ctrl.github.io/shengcang-sound-library/#sound-library', local: '/shengcang-sound-library/#sound-library' },
-        { name: '🎚️ 声仓首页与使用指南', meta: '波形预览与下载', cloud: 'https://aikingtai-ctrl.github.io/shengcang-sound-library/', local: '/shengcang-sound-library/' }
-      ]
+        "key": "shengcang",
+        "title": "4. 声仓 · 找到画面之外的声音",
+        "tags": [
+            [
+                "72,298 条影视声音素材 · 12 大声效分类",
+                ""
+            ],
+            [
+                "统一密码保护 · 微信一次通用",
+                "red"
+            ]
+        ],
+        "desc": "全量归档 72,298 条影视级声音素材，涵盖环境氛围、物件拟音、人物拟音、交通机械、战斗破坏、科幻魔法、动物生物、冲击强调、转场运动、情绪张力、界面提示、音乐 12 大声效分类，支持国内直连试听、波形预览与原文件下载。",
+        "cloudUrl": "https://aikingtai-ctrl.github.io/shengcang-sound-library/#sound-library",
+        "localPath": "/shengcang-sound-library/#sound-library",
+        "catTitle": "功能与分类入口：",
+        "categories": [
+            {
+                "name": "🔊 在线声效分类检索与试听",
+                "meta": "12 大类 · 72,298 条",
+                "cloud": "https://aikingtai-ctrl.github.io/shengcang-sound-library/#sound-library",
+                "local": "/shengcang-sound-library/#sound-library"
+            },
+            {
+                "name": "🎚️ 声仓首页与使用指南",
+                "meta": "波形预览与下载",
+                "cloud": "https://aikingtai-ctrl.github.io/shengcang-sound-library/",
+                "local": "/shengcang-sound-library/"
+            }
+        ]
     }
-  ];
+];
 
   var isLocalOrTunnel = /trycloudflare\.com$|127\.0\.0\.1$|localhost$/i.test(location.hostname || '');
   var activeTunnelBase = isLocalOrTunnel ? location.origin : '';
