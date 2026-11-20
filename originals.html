@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="浏览金泰文化与视听资源库的神话、影视原图，并下载服务器保存的无损 PNG。">
+  <title>原图档案｜金泰文化与视听资源库</title>
+  <style>
+/* Hallmark: editorial image index; real source art leads; no decorative metrics. */
+/* Critique: keep the server and download states visible without crowding the pictures. */
+:root {
+  --paper: #f5f2e9;
+  --surface: #fffdfa;
+  --ink: #1b312d;
+  --muted: #53635d;
+  --line: #cbd3ca;
+  --accent: #315d4d;
+  --accent-ink: #f5f2e9;
+  --quiet: #e9eee7;
+  --focus: #b45e38;
+  --error: #8d3d2e;
+  --shadow: rgba(27, 49, 45, .08);
+  --font-body: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; }
+body { background: var(--paper); color: var(--ink); font: 16px/1.6 var(--font-body); }
+button, input, a { font: inherit; }
+button { cursor: pointer; }
+button:active, .download:active, .locked a:active { filter: brightness(.9); }
+a { color: inherit; }
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.shell { width: min(1320px, calc(100% - 36px)); margin: 0 auto; }
+.topbar { border-bottom: 1px solid var(--line); }
+.topbar .shell { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 72px; }
+.brand { font-size: 17px; font-weight: 750; text-decoration: none; }
+.back { color: var(--muted); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.hero { padding: clamp(40px, 6vw, 88px) 0 32px; }
+.hero h1 { max-width: 850px; margin: 0 0 12px; font-size: clamp(40px, 5.8vw, 76px); line-height: 1.1; letter-spacing: -.045em; overflow-wrap: break-word; text-wrap: balance; min-width: 0; }
+.hero p { max-width: 650px; margin: 0; color: var(--muted); font-size: clamp(17px, 2vw, 20px); }
+.tools { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding: 12px 0 24px; border-bottom: 1px solid var(--line); }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tab { padding: 12px 16px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: var(--surface); }
+.tab[aria-selected="true"] { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+.search-wrap { display: grid; gap: 4px; width: min(100%, 390px); }
+.search-wrap label { color: var(--muted); font-size: 14px; }
+.search { width: 100%; min-height: 48px; padding: 12px; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); background: var(--surface); }
+.statusline { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin: 20px 0; color: var(--muted); font-size: 14px; }
+.message { padding: 24px 0; color: var(--muted); }
+.message.error { color: var(--error); }
+.retry { margin-left: 12px; border: 0; padding: 8px 12px; border-radius: 5px; background: var(--accent); color: var(--accent-ink); }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin: 20px 0 40px; }
+.card { min-width: 0; background: var(--surface); border: 1px solid var(--line); }
+.image-link { display: block; width: 100%; aspect-ratio: 4 / 3; background: var(--quiet); overflow: clip; }
+.image-link img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.details { padding: 16px; }
+.details h2 { margin: 0 0 4px; min-height: 2.9em; font-size: 16px; line-height: 1.45; font-weight: 700; overflow-wrap: anywhere; min-width: 0; }
+.meta { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.download { padding: 8px 12px; background: var(--accent); color: var(--accent-ink); border-radius: 4px; text-decoration: none; font-size: 14px; }
+.open { color: var(--accent); font-size: 14px; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.pager { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 0 0 64px; }
+.pager button { min-width: 84px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--ink); }
+.pager button:disabled { background: var(--quiet); color: var(--muted); border-color: var(--line); cursor: default; }
+.footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: 13px; }
+.footer p { margin: 0; }
+.locked { min-height: 60vh; display: grid; place-content: center; text-align: center; gap: 12px; }
+#locked[hidden], #app[hidden] { display: none !important; }
+.locked h1 { margin: 0; }
+.locked p { margin: 0; color: var(--muted); }
+.locked a { display: inline-block; justify-self: center; padding: 8px 16px; border-radius: 5px; background: var(--accent); color: var(--accent-ink); text-decoration: none; }
+@media (max-width: 1050px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .details { padding: 12px; } }
+@media (max-width: 520px) { .shell { width: min(100% - 24px, 1320px); } .topbar .shell { min-height: 60px; } .grid { grid-template-columns: minmax(0, 1fr); } .hero { padding-top: 32px; } .tools { align-items: stretch; } .search-wrap { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <div id="locked" class="shell locked" hidden>
+    <h1>请先进入资源库</h1>
+    <p>使用现有的统一访问密码验证后，再打开原图档案。</p>
+    <a href="index.html">前往总入口</a>
+  </div>
+  <div id="app" hidden>
+    <div class="topbar"><div class="shell">
+      <a class="brand" href="index.html">金泰文化与视听资源库</a>
+      <a class="back" href="index.html">返回总入口</a>
+    </div></div>
+    <main class="shell">
+      <section class="hero">
+        <h1>原图档案</h1>
+        <p>在这里浏览作品，并下载保存在服务器上的无损 PNG 原图。</p>
+      </section>
+      <section aria-label="筛选原图">
+        <div class="tools">
+          <div class="tabs" role="tablist" aria-label="图像类别">
+            <button class="tab" id="tab-myth" type="button" role="tab" aria-selected="true">神话志怪 <span id="myth-count"></span></button>
+            <button class="tab" id="tab-film" type="button" role="tab" aria-selected="false">影视作品 <span id="film-count"></span></button>
+          </div>
+          <div class="search-wrap">
+            <label for="search">查找原图</label>
+            <input class="search" id="search" type="search" autocomplete="off" placeholder="输入编号或影片文件名">
+          </div>
+        </div>
+      </section>
+      <div class="statusline"><span id="status" role="status" aria-live="polite">正在连接服务器…</span><span id="position"></span></div>
+      <div id="message" class="message" hidden></div>
+      <div id="grid" class="grid" aria-label="原图列表"></div>
+      <nav class="pager" aria-label="翻页">
+        <button id="prev" type="button">上一页</button>
+        <span id="page-label"></span>
+        <button id="next" type="button">下一页</button>
+      </nav>
+    </main>
+    <footer class="footer"><div class="shell"><p>预览图便于浏览；“下载无损 PNG”提供服务器上的原始文件。</p></div></footer>
+  </div>
+  <noscript><p class="shell message">需要启用 JavaScript 才能读取服务器中的最新原图清单。</p></noscript>
+  <script>
+  (() => {
+    'use strict';
+    const key = 'jt_gate';
+    const expected = '6e95ff3e55611d24803014d9de77b401f191f198f9372577e58f9aa2e51771d3';
+    let admitted = false;
+    try { admitted = localStorage.getItem(key) === expected || sessionStorage.getItem(key) === expected; } catch (_) {}
+    if (!admitted && (location.hostname === 'localhost' || location.hostname === '127.0.0.1')) admitted = true;
+    if (!admitted) { document.getElementById('locked').hidden = false; return; }
+    document.getElementById('app').hidden = false;
+
+    const groups = { myth_5903: '神话志怪', film_8878: '影视作品' };
+    const perPage = 18;
+    const params = new URLSearchParams(location.search);
+    const state = { group: params.get('group') in groups ? params.get('group') : 'myth_5903',
+      query: params.get('q') || '', page: Math.max(1, Number(params.get('page')) || 1),
+      origin: '', items: [] };
+    const $ = id => document.getElementById(id);
+    $('search').value = state.query;
+    const makeUrl = (kind, item) => {
+      const stem = item.name.replace(/\.png$/i, '');
+      const filename = kind === 'original-pngs' ? item.name : stem + '.webp';
+      return state.origin + '/' + kind + '/' + item.group + '/' + encodeURIComponent(filename);
+    };
+    const sizeMb = bytes => (bytes / 1000000).toFixed(1) + ' MB';
+    const setMessage = (text, error = false) => {
+      $('message').hidden = !text;
+      $('message').textContent = text;
+      $('message').classList.toggle('error', error);
+    };
+    const writeUrl = () => {
+      const p = new URLSearchParams();
+      p.set('group', state.group);
+      if (state.query) p.set('q', state.query);
+      if (state.page > 1) p.set('page', String(state.page));
+      history.replaceState(null, '', location.pathname + '?' + p);
+    };
+    function filtered() {
+      const q = state.query.trim().toLocaleLowerCase();
+      return state.items.filter(item => item.group === state.group && (!q || item.name.toLocaleLowerCase().includes(q)));
+    }
+    function card(item) {
+      const article = document.createElement('article');
+      article.className = 'card';
+      const original = makeUrl('original-pngs', item);
+      const imageLink = document.createElement('a');
+      imageLink.className = 'image-link';
+      imageLink.href = original;
+      imageLink.target = '_blank';
+      imageLink.rel = 'noopener noreferrer';
+      imageLink.setAttribute('aria-label', '查看 ' + item.name + ' 原图');
+      const image = document.createElement('img');
+      image.alt = item.name + ' 预览';
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      image.src = item.preview ? makeUrl('gallery-previews', item) : original;
+      image.onerror = () => { if (image.src !== original) image.src = original; };
+      imageLink.append(image);
+      article.append(imageLink);
+      const details = document.createElement('div');
+      details.className = 'details';
+      const title = document.createElement('h2');
+      title.textContent = item.name.replace(/\.png$/i, '');
+      const meta = document.createElement('p');
+      meta.className = 'meta';
+      meta.textContent = groups[item.group] + ' / 原始 PNG / ' + sizeMb(item.bytes);
+      const actions = document.createElement('div');
+      actions.className = 'actions';
+      const download = document.createElement('a');
+      download.className = 'download';
+      download.href = original + '?download=1';
+      download.textContent = '下载无损 PNG';
+      const open = document.createElement('a');
+      open.className = 'open';
+      open.href = original;
+      open.target = '_blank';
+      open.rel = 'noopener noreferrer';
+      open.textContent = '查看原图';
+      actions.append(download, open);
+      details.append(title, meta, actions);
+      article.append(details);
+      return article;
+    }
+    function render() {
+      $('tab-myth').setAttribute('aria-selected', String(state.group === 'myth_5903'));
+      $('tab-film').setAttribute('aria-selected', String(state.group === 'film_8878'));
+      const all = filtered();
+      const pages = Math.max(1, Math.ceil(all.length / perPage));
+      state.page = Math.min(state.page, pages);
+      const start = (state.page - 1) * perPage;
+      const current = all.slice(start, start + perPage);
+      $('grid').replaceChildren(...current.map(card));
+      $('status').textContent = '已连接服务器：' + all.length.toLocaleString('zh-CN') + ' 张原图';
+      $('position').textContent = all.length ? (start + 1) + '–' + (start + current.length) + ' / ' + all.length : '';
+      $('page-label').textContent = state.page + ' / ' + pages;
+      $('prev').disabled = state.page <= 1;
+      $('next').disabled = state.page >= pages;
+      setMessage(all.length ? '' : '没有找到符合条件的原图。');
+      writeUrl();
+    }
+    async function connect() {
+      $('status').textContent = '正在连接服务器…';
+      setMessage('');
+      try {
+        const tunnelResponse = await fetch(new URL('tunnel.json', location.href), { cache: 'no-store' });
+        if (!tunnelResponse.ok) throw new Error('隧道地址不可用');
+        const tunnel = await tunnelResponse.json();
+        const origin = new URL(tunnel.tunnel_url);
+        if (origin.protocol !== 'https:') throw new Error('入口地址无效');
+        state.origin = origin.origin;
+        const listResponse = await fetch(state.origin + '/__original_gallery_index', { cache: 'no-store' });
+        if (!listResponse.ok) throw new Error('服务器原图库暂不可用');
+        const payload = await listResponse.json();
+        if (!Array.isArray(payload.items)) throw new Error('原图库清单无效');
+        state.items = payload.items.filter(item =>
+          item.group in groups && /^[\w.-]+\.png$/i.test(item.name) && Number.isFinite(item.bytes));
+        state.items.sort((a, b) => b.name.localeCompare(a.name, 'zh-CN', { numeric: true }));
+        $('myth-count').textContent = state.items.filter(item => item.group === 'myth_5903').length.toLocaleString('zh-CN');
+        $('film-count').textContent = state.items.filter(item => item.group === 'film_8878').length.toLocaleString('zh-CN');
+        render();
+      } catch (error) {
+        $('status').textContent = '服务器暂未连接';
+        $('grid').replaceChildren();
+        $('page-label').textContent = '';
+        $('prev').disabled = $('next').disabled = true;
+        setMessage('暂时无法读取原图，请稍后刷新页面。', true);
+      }
+    }
+    $('tab-myth').addEventListener('click', () => { state.group = 'myth_5903'; state.page = 1; render(); });
+    $('tab-film').addEventListener('click', () => { state.group = 'film_8878'; state.page = 1; render(); });
+    $('search').addEventListener('input', event => { state.query = event.target.value; state.page = 1; render(); });
+    $('prev').addEventListener('click', () => { state.page--; render(); scrollTo({ top: 0, behavior: 'auto' }); });
+    $('next').addEventListener('click', () => { state.page++; render(); scrollTo({ top: 0, behavior: 'auto' }); });
+    connect();
+  })();
+  </script>
+</body>
+</html>
