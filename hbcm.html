@@ -4656,16 +4656,25 @@ const HYBRID_REAL_CASES = [
   }
 ];
 
-const hybridPreloadedImages = HYBRID_REAL_CASES.map(c => {
-  const bImg = new Image();
-  bImg.src = c.beforeSrc;
-  const aImg = new Image();
-  aImg.src = c.afterSrc;
-  return { before: bImg, after: aImg };
-});
+const hybridPreloadedImages = HYBRID_REAL_CASES.map(() => ({
+  before: new Image(),
+  after: new Image(),
+  loaded: false
+}));
+
+function ensureHybridCaseImages(idx) {
+  const c = HYBRID_REAL_CASES[idx], slot = hybridPreloadedImages[idx];
+  if (!c || !slot || slot.loaded) return;
+  slot.loaded = true;
+  slot.before.decoding = "async";
+  slot.after.decoding = "async";
+  slot.before.src = c.beforeSrc;
+  slot.after.src = c.afterSrc;
+}
 
 function switchHybridCase(idx, btn) {
   currentHybridCaseIdx = idx;
+  ensureHybridCaseImages(idx);
   if (btn) {
     btn.parentElement.querySelectorAll(".ctrl-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
@@ -4691,7 +4700,7 @@ function playHybridClip(src, title, autoPlay = true) {
   if (vid) {
     if (vid.getAttribute("src") !== src) {
       vid.setAttribute("src", src);
-      vid.load();
+      if (autoPlay || vid.preload !== "none") vid.load();
     }
     if (autoPlay) {
       vid.play().catch(() => {});
@@ -5115,32 +5124,32 @@ function openJintaiProofModal(mode = "overview", lanPlatformInfo = null) {
     <div class="grid-3" style="gap:0.95rem;">
       <div class="proof-media-box">
         <div class="proof-media-tag"><span>① 实拍 ➔ Easy-H3 + :3910 18镜换角总板</span><span class="pill-badge green">r=0.999978</span></div>
-        <img src="assets/proof/hybrid1_after_remake.jpg" alt="18镜换角" onclick="openJintaiProofModal('hybrid18')">
+        <img loading="lazy" decoding="async" src="assets/proof/hybrid1_after_remake.jpg" alt="18镜换角" onclick="openJintaiProofModal('hybrid18')">
         <button class="proof-jump-btn gold" style="margin-top:0.5rem;justify-content:center;" onclick="openJintaiProofModal('hybrid18')">🔍 点此播放换角视频 &amp; 查看18镜总板</button>
       </div>
       <div class="proof-media-box">
         <div class="proof-media-tag"><span>② 盛唐明光铠陌刀破盾 · 四问打斗因果链</span><span class="pill-badge">H3 6+6 武戏</span></div>
-        <img src="assets/proof/sample3_modao_combat_board.jpg" alt="陌刀破盾" onclick="openJintaiProofModal('combat_board')">
+        <img loading="lazy" decoding="async" src="assets/proof/sample3_modao_combat_board.jpg" alt="陌刀破盾" onclick="openJintaiProofModal('combat_board')">
         <button class="proof-jump-btn gold" style="margin-top:0.5rem;justify-content:center;" onclick="openJintaiProofModal('combat_board')">🔍 点此播放 1080P 武戏成片 &amp; 检视板</button>
       </div>
       <div class="proof-media-box">
         <div class="proof-media-tag"><span>③ Qwen 2.1 原生2K RGBA &amp; 弘文館零乱码</span><span class="pill-badge green">28s 直出</span></div>
-        <img src="assets/proof/sheet_qwen21_batch2.jpg" alt="Qwen2.1核验板" onclick="openJintaiProofModal('qwen21')">
+        <img loading="lazy" decoding="async" src="assets/proof/sheet_qwen21_batch2.jpg" alt="Qwen2.1核验板" onclick="openJintaiProofModal('qwen21')">
         <button class="proof-jump-btn gold" style="margin-top:0.5rem;justify-content:center;" onclick="openJintaiProofModal('qwen21')">🔍 点此查看 Qwen 2.1 三大工作流核验板</button>
       </div>
       <div class="proof-media-box">
         <div class="proof-media-tag"><span>④ 海报字体排版 &amp; PoseStudio 3D姿态控制</span><span class="pill-badge">52.3s 直出</span></div>
-        <img src="assets/proof/sheet_qwen21_batch3.jpg" alt="PoseStudio核验板" onclick="openJintaiProofModal('posestudio')">
+        <img loading="lazy" decoding="async" src="assets/proof/sheet_qwen21_batch3.jpg" alt="PoseStudio核验板" onclick="openJintaiProofModal('posestudio')">
         <button class="proof-jump-btn gold" style="margin-top:0.5rem;justify-content:center;" onclick="openJintaiProofModal('posestudio')">🔍 点此查看海报排版 &amp; 3D白模姿态核验板</button>
       </div>
       <div class="proof-media-box">
         <div class="proof-media-tag"><span>⑤ 夜巴持手机 SAM 3.1 掩码 ➔ H3 换护士</span><span class="pill-badge green">零绿幕换人</span></div>
-        <img src="assets/proof/sheet_mdmz_charswap.jpg" alt="夜巴换人" onclick="openJintaiProofModal('mdmz_sheet')">
+        <img loading="lazy" decoding="async" src="assets/proof/sheet_mdmz_charswap.jpg" alt="夜巴换人" onclick="openJintaiProofModal('mdmz_sheet')">
         <button class="proof-jump-btn gold" style="margin-top:0.5rem;justify-content:center;" onclick="openJintaiProofModal('mdmz_sheet')">🔍 点此播放夜巴换人视频 &amp; 掩码核验板</button>
       </div>
       <div class="proof-media-box">
         <div class="proof-media-tag"><span>⑥ MiniMax-Remover 视频动态水印无痕擦除</span><span class="pill-badge">33帧净除</span></div>
-        <img src="assets/proof/sheet_rh_approved3.jpg" alt="Remover擦除" onclick="openJintaiProofModal('rh_approved')">
+        <img loading="lazy" decoding="async" src="assets/proof/sheet_rh_approved3.jpg" alt="Remover擦除" onclick="openJintaiProofModal('rh_approved')">
         <button class="proof-jump-btn gold" style="margin-top:0.5rem;justify-content:center;" onclick="openJintaiProofModal('rh_approved')">🔍 点此播放擦除视频 &amp; 三套流核验板</button>
       </div>
     </div>
@@ -5151,6 +5160,42 @@ function openJintaiProofModal(mode = "overview", lanPlatformInfo = null) {
 function closeJintaiProofModal() {
   const modal = document.getElementById("jintaiProofModal");
   if (modal) modal.classList.remove("open");
+}
+
+function initViewportMediaHydrator() {
+  if (!("IntersectionObserver" in window)) {
+    HYBRID_REAL_CASES.forEach((_, idx) => ensureHybridCaseImages(idx));
+    return;
+  }
+  const io = new IntersectionObserver(entries => {
+    for (const ent of entries) {
+      if (!ent.isIntersecting) continue;
+      const el = ent.target;
+      if (el.id === "hybridWipeCanvas") {
+        ensureHybridCaseImages(currentHybridCaseIdx);
+        HYBRID_REAL_CASES.forEach((_, idx) => ensureHybridCaseImages(idx));
+      } else if (el.tagName === "VIDEO") {
+        if (el.dataset.poster && !el.getAttribute("poster")) {
+          el.setAttribute("poster", el.dataset.poster);
+        }
+        if (el.preload === "none") el.preload = "metadata";
+      }
+      io.unobserve(el);
+    }
+  }, { rootMargin: "650px 0px" });
+
+  const observeAll = root => {
+    if (!root || !root.querySelectorAll) return;
+    if (root.tagName === "VIDEO") io.observe(root);
+    root.querySelectorAll("video, #hybridWipeCanvas").forEach(el => io.observe(el));
+  };
+  observeAll(document);
+  const mo = new MutationObserver(muts => {
+    for (const m of muts) {
+      m.addedNodes.forEach(n => { if (n.nodeType === 1) observeAll(n); });
+    }
+  });
+  mo.observe(document.body, { childList: true, subtree: true });
 }
 
 // 初始化全页所有动态组件
@@ -5176,6 +5221,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initAudioDemo();
   initStorageDemo();
   initHybridDemo();
+  initViewportMediaHydrator();
 });
 </script>
 </body>
