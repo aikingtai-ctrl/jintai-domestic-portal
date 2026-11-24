@@ -1991,7 +1991,7 @@
           <div id="audioStemNowDesc" class="audio-stem-desc">
             实测来源：《唐魂·送元二使安西》S02 角色干声轨（A机 :3900 VoiceStudio · VoxCPM2 48kHz 零样本克隆 · 台词：“一千二百多年前，也是这样一个下雨的早上。”）
           </div>
-          <audio id="audioStemPlayer" class="jintai-audio-el" controls preload="metadata" src="assets/proof/stem1_voxcpm2_48k.wav"></audio>
+          <audio id="audioStemPlayer" class="jintai-audio-el" controls preload="none" src="assets/proof/stem1_voxcpm2_48k.wav"></audio>
           <div class="proof-btn-group" style="margin-top:0.25rem;">
             <button class="proof-jump-btn gold" onclick="playRealAudioStem(0)">▶ 播轨1: VoxCPM2 干声</button>
             <button class="proof-jump-btn" onclick="playRealAudioStem(1)">▶ 播轨2: HDemucs 刀剑拟音</button>
@@ -2198,7 +2198,7 @@
             <span id="hybridVideoTitle">🎬 当前实例真实生成 MP4 成片验证（点击播放）：实拍走位 ➔ Easy-H3 + :3910 无痕换角</span>
             <span class="pill-badge green">A机 H100 实测真品</span>
           </div>
-          <video id="hybridProofVideo" controls preload="metadata" style="height:215px;" src="assets/proof/video_driver_recast_s01.mp4"></video>
+          <video id="hybridProofVideo" controls preload="none" style="height:215px;" src="assets/proof/video_driver_recast_s01.mp4"></video>
           <div class="proof-btn-group" style="margin-top:0.5rem;">
             <button class="proof-jump-btn gold" onclick="playHybridClip('assets/proof/video_driver_recast_s01.mp4', '实拍走位 ➔ Easy-H3 + :3910 车内无痕换角 (S01)')">▶ 播车内换角成片</button>
             <button class="proof-jump-btn" onclick="playHybridClip('assets/proof/video_feihou_easy_h3.mp4', '小肥猴 FeiHou Easy-H3 二段式换人 1312×736 实测原片')">▶ 播小肥猴 Easy-H3 实测片</button>
@@ -3026,14 +3026,14 @@ function showPromptSample(idx, btn) {
           <span>${item.imgTitle}</span>
           <span class="pill-badge">点击放大原图</span>
         </div>
-        <img src="${item.img}" alt="${item.imgTitle}" onclick="openJintaiProofImage('${item.img}', '${item.imgTitle}')" title="点击放大检视 2K 实测原图">
+        <img loading="lazy" decoding="async" src="${item.img}" alt="${item.imgTitle}" onclick="openJintaiProofImage('${item.img}', '${item.imgTitle}')" title="点击放大检视 2K 实测原图">
       </div>
       <div class="proof-media-box">
         <div class="proof-media-tag">
           <span>${item.videoTitle}</span>
           <span class="pill-badge green">真实 MP4 在线播放</span>
         </div>
-        <video src="${item.video}" controls preload="metadata" poster="${item.img}"></video>
+        <video src="${item.video}" controls preload="none" data-poster="${item.img}"></video>
       </div>
       <div class="proof-meta-col">
         <div>
@@ -3901,7 +3901,7 @@ function runIdeaSimulation() {
             <span>🎬 本命题实测成片视频：${p.proofTitle}</span>
             <span class="pill-badge green">点击播放实测真品</span>
           </div>
-          <video id="simLiveProofVideo" src="${p.proofVideo}" poster="${p.proofImg}" controls preload="metadata" style="height:210px;"></video>
+          <video id="simLiveProofVideo" src="${p.proofVideo}" data-poster="${p.proofImg}" controls preload="none" style="height:210px;"></video>
           <div style="margin-top:0.45rem;font-size:0.76rem;color:var(--text-secondary);display:flex;justify-content:space-between;align-items:center;">
             <span>🔊 配套 48kHz 实测音轨：</span>
             <audio src="${p.proofAudio}" controls preload="none" style="height:28px;width:68%;"></audio>
@@ -3913,8 +3913,8 @@ function runIdeaSimulation() {
             <span class="pill-badge">2K / 100% 抽帧</span>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.45rem;">
-            <img src="${p.proofImg}" alt="2K母图" style="height:175px;" onclick="openJintaiProofImage('${p.proofImg}', '${p.proofTitle} · 2K 考证母图真品')" title="点击放大检视 2K 母图">
-            <img src="${p.proofSheet}" alt="审计检视板" style="height:175px;" onclick="openJintaiProofImage('${p.proofSheet}', '${p.proofTitle} · A机实测核验总板')" title="点击放大检视核验总板">
+            <img loading="lazy" decoding="async" src="${p.proofImg}" alt="2K母图" style="height:175px;" onclick="openJintaiProofImage('${p.proofImg}', '${p.proofTitle} · 2K 考证母图真品')" title="点击放大检视 2K 母图">
+            <img loading="lazy" decoding="async" src="${p.proofSheet}" alt="审计检视板" style="height:175px;" onclick="openJintaiProofImage('${p.proofSheet}', '${p.proofTitle} · A机实测核验总板')" title="点击放大检视核验总板">
           </div>
           <div class="proof-btn-group" style="margin-top:0.5rem;">
             <button class="proof-jump-btn gold" onclick="openJintaiProofImage('${p.proofImg}', '${p.proofTitle} · 2K 考证母图真品')">🔍 放大 2K 母图</button>
