@@ -1,12 +1,13 @@
 {
   "tunnel_url": "https://scenes-luke-bless-separately.trycloudflare.com",
-  "updated_at": "2026-11-23T09:07:01+08:00",
+  "updated_at": "2026-11-26T12:17:14+08:00",
   "sites": {
     "portal": "https://scenes-luke-bless-separately.trycloudflare.com/",
     "history": "https://scenes-luke-bless-separately.trycloudflare.com/jintai-history-image-library/index.html",
     "shengcang": "https://scenes-luke-bless-separately.trycloudflare.com/shengcang-sound-library/#sound-library",
     "documentary": "https://scenes-luke-bless-separately.trycloudflare.com/documentary-classroom-library/",
     "zhonghua": "https://scenes-luke-bless-separately.trycloudflare.com/zhonghua-civilization-atlas/?v=58#era=%E5%95%86",
-    "story2board": "https://scenes-luke-bless-separately.trycloudflare.com/jintai-story2board/"
+    "story2board": "https://scenes-luke-bless-separately.trycloudflare.com/jintai-story2board/",
+    "workflow_hub": "https://scenes-luke-bless-separately.trycloudflare.com/jintai-workflow-hub/"
   }
 }
